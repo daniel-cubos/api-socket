@@ -6,13 +6,14 @@ const socket = require('./services/socket');
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 app.use(routes);
 
 const server = http.createServer(app);
 
 socket(server);
 
-app.request.io = socket;
+app.request.socket = socket;
 
 module.exports = server;
 
