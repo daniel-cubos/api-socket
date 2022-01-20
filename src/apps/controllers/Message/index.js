@@ -15,8 +15,6 @@ function sendMessage(req, res) {
 
   messages.push(newMessage);
 
-  req.io.emit('front-messages', newMessage);
-
   return res.status(201).json(messages);
 }
 
