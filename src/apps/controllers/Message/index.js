@@ -3,7 +3,7 @@ const { v4 } = require('uuid')
 
 function allMessages(req, res) {
 
-  return res.status(202).json({ messages });
+  return res.status(202).json(messages);
 }
 
 function sendMessage(req, res) {
@@ -14,9 +14,9 @@ function sendMessage(req, res) {
     message: message
   });
 
-  req.socket.emit('front-messages', { messages });
+  req.io.emit('front-messages', messages);
 
-  return res.status(201).json({ messages });
+  return res.status(201).json(messages);
 }
 
 module.exports = {

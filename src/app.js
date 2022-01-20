@@ -11,9 +11,7 @@ app.use(routes);
 
 const server = http.createServer(app);
 
-socket(server);
-
-app.request.socket = socket;
+app.request.io = socket(server);
 
 module.exports = server;
 
