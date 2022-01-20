@@ -8,13 +8,14 @@ function allMessages(req, res) {
 
 function sendMessage(req, res) {
   const { message } = req.body;
-
-  messages.push({
+  const newMessage = {
     id: v4(),
     message: message
-  });
+  }
 
-  req.io.emit('front-messages', messages);
+  messages.push(newMessage);
+
+  req.io.emit('front-messages', newMessage);
 
   return res.status(201).json(messages);
 }
